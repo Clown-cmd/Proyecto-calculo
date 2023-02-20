@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define la ecuación de la tasa de cambio de la potencia
+def power_derivative(t):
+    Vm = 120
+    Im = 5
+    w = 100*np.pi
+    phi = np.pi/3
+    return -Vm*Im*w*np.sin(w*t+phi)*np.cos(w*t) - Vm*Im*w*np.cos(w*t+phi)*np.sin(w*t)
+
+# Genera un arreglo de valores de tiempo de 0 a 0.1 segundos con un intervalo de 0.001 segundos
+t = np.arange(0, 0.1, 0.001)
+
+# Calcula la tasa de cambio de la potencia para cada valor de tiempo
+dpdt = power_derivative(t)
+
+# Crea una figura para la gráfica
+fig, ax = plt.subplots()
+
+# Grafica la tasa de cambio de la potencia en función del tiempo
+ax.plot(t, dpdt)
+
+# Agrega etiquetas y título a la gráfica
+ax.set_xlabel('Tiempo (s)')
+ax.set_ylabel('Tasa de cambio de la potencia (W/s)')
+ax.set_title('Tasa de cambio de la potencia en función del tiempo')
+
+# Muestra la gráfica
+plt.show()
