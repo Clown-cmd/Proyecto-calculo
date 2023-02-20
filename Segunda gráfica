@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Definir los parámetros de la señal
+Vm = 120
+Im = 5
+phi = np.pi/3
+f = 50
+w = 2*np.pi*f
+
+# Definir el período de la señal
+T = 1/f
+t = np.linspace(0, T, 1000)
+
+# Calcular la potencia instantánea
+p = Vm * Im * np.cos(w*t + phi) * np.cos(w*t)
+
+# Graficar la potencia instantánea
+plt.plot(t, p)
+plt.xlabel('Tiempo (s)')
+plt.ylabel('Potencia instantánea (W)')
+plt.title('Potencia instantánea en un circuito')
+plt.show()
